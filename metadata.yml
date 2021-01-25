@@ -1,0 +1,25 @@
+name: Interplanetary Parcel Service
+slug: ipps
+authors:
+  - Harald Böhm <harald.boehm@fau.de>
+install:
+  debian_packages:
+    - build-essential
+    - git
+    - golang
+  postinst_commands:
+    - systemctl enable ipps-setup.service
+    - systemctl enable ipps.service
+    - chown ipps:ipps /srv/ipps/privkey.pem /srv/ipps/pubkey.pem
+  prevent_outgoing_connections: True
+
+checker:
+  script_path: ./checker
+  max_duration: 150
+  install_commands:
+    - 'rm -f checker && go build ./cmd/checker'
+  debian_packages:
+    - build-essential
+    - git
+    - golang
+  pip_packages: []

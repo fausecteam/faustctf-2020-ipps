@@ -1,0 +1,66 @@
+{{template "header.html" .}}
+<main class="container">
+  <h1>Addresses</h1>
+  <table id="addresses" class="table table-striped">
+    <thead>
+    <th scope="col">Street and Number</th>
+    <th scope="col">ZIP</th>
+    <th scope="col">City</th>
+    <th scope="col">Country</th>
+    <th scope="col">Planet</th>
+    </thead>
+    <tbody>
+    {{range .Addresses}}
+      <tr>
+        <td>{{.Street}}</td>
+        <td>{{.Zip}}</td>
+        <td>{{.City}}</td>
+        <td>{{.Country}}</td>
+        <td>{{.Planet}}</td>
+      </tr>
+    {{else}}
+      <tr>
+        <td class="text-center" colspan="5">You have not added any addresses yet.</td>
+      </tr>
+    {{end}}
+    </tbody>
+  </table>
+  {{template "alerts.html" .}}
+  <h2>New Address</h2>
+  <form id="add-address-form" method="post" action="/profile/addresses/add">
+    <div class="form-row">
+      <div class="col mb-3">
+        <label for="street">Street and Number</label>
+        <input class="form-control" type="text" name="street" id="street">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-1 mb-3">
+        <label for="zip">ZIP Code</label>
+        <input class="form-control" type="text" name="zip" id="zip">
+      </div>
+      <div class="col mb-3">
+        <label for="zip">City</label>
+        <input class="form-control" type="text" name="city" id="city">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col mb-3">
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name="country" id="country">
+      </div>
+      <div class="col mb-3">
+        <label for="planet">Planet</label>
+        <input class="form-control" type="text" name="planet" id="planet">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">
+      Add Address
+      <div class="d-none spinner-border spinner-border-sm" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </button>
+  </form>
+</main>
+<script src="/static/js/address.js"></script>
+{{template "footer.html" .}}

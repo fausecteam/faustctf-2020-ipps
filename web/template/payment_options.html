@@ -1,0 +1,56 @@
+{{template "header.html" .}}
+<main class="container">
+  {{template "alerts.html" .}}
+  <h1>Payment Options</h1>
+  <h2>Credit Cards</h2>
+  <p class="mb-2"><small class="text-muted">We accept MarsCard only.</small></p>
+  <div class="row">
+    <div class="col">
+      <a data-toggle="collapse" class="collapse-trigger collapsed d-block w-100"
+         href="#addcreditcard" role="button" aria-expanded="false" aria-controls="credit-card-form">
+        Add Credit Card
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="addcreditcard" class="collapse">
+        <form id="add-credit-card-form" class="form-inline" method="post" action="./add-payment-option">
+          <label class="font-weight-bold" for="number">Card Number</label>
+          <input type="text" class="form-control ml-2 mr-2 my-1" id="number" name="number">
+          <button type="submit" class="btn btn-primary my-1">
+            Add Card
+            <div class="d-none spinner-border spinner-border-sm" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <table id="credit-cards" class="table table-striped mt-3">
+    <thead>
+    <th scope="col">Type</th>
+    <th scope="col">Number</th>
+    <th scope="col">Additional Information</th>
+    </thead>
+    <tbody>
+    {{range .Cards}}
+      <tr>
+        <td>MarsCard</td>
+        <td>{{.Number}}</td>
+        <td>Expires: TODO</td>
+      </tr>
+    {{else}}
+      <tr>
+        <td class="text-center" colspan="3">
+          You have not added any payment method yet.
+        </td>
+      </tr>
+    {{end}}
+    </tbody>
+  </table>
+</main>
+
+<script src="/static/js/payment.js"></script>
+{{template "footer.html" .}}

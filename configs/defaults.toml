@@ -1,0 +1,20 @@
+[database]
+hostname = "/run/postgresql"
+port = 5432
+name = "ipps"
+username = "ipps"
+password = ""
+
+[server]
+address = ":8000"
+read_timeout = "15s"
+write_timeout = "15s"
+
+[grpc]
+address = ":8001"
+private_key_file = "./privkey.pem"
+public_key_file = "./pubkey.pem"
+
+[session]
+Name = "ipps_session"
+Key = "d3f4u1t5_c4n_b3_r3411y_d4ng3r0u5"

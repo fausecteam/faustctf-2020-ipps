@@ -1,0 +1,33 @@
+{{template "header.html" .}}
+<main class="container">
+  {{template "alerts.html" .}}
+  <h1>Personal Information</h1>
+  {{with .User}}
+    <form method="post" action="./profile/update">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{.Name}}">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{.Email.Address}}">
+      </div>
+      <div class="form-group">
+        <label for="current-password">Current Password</label>
+        <input type="password" class="form-control" id="current-password" name="current-password">
+      </div>
+      <div class="form-group">
+        <label for="new-password">New Password</label>
+        <input type="password" class="form-control" id="new-password" name="new-password">
+      </div>
+      <div class="form-group">
+        <label for="new-password-confirmation">Confirm New Password</label>
+        <input type="password" class="form-control"
+               id="new-password-confirmation" name="new-password-confirmation">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <input type="reset" class="btn btn-outline-secondary">
+    </form>
+  {{end}}
+</main>
+{{template "footer.html" .}}

@@ -1,0 +1,19 @@
+{{template "header.html" .}}
+<main class="container">
+  <h1>Tracking Information</h1>
+  <div id="events">
+  {{range .Events}}
+    <div class="card text-white mb-3" style="max-width: 18rem;">
+      <div class="card-header">
+        <h5>{{.Time.Format "Jan _2, 2006 at 15:04"}}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{.Type.String}}.</p>
+      </div>
+    </div>
+  {{else}}
+    <p>There does not exist any tracking information for this parcel, yet.</p>
+  {{end}}
+  </div>
+</main>
+{{template "footer.html" .}}

@@ -1,0 +1,33 @@
+<div id="alerts">
+  {{if .Success}}
+  <div class="alert alert-success" role="alert">
+    {{.Success}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {{end}}
+  {{if .Errors}}
+  <div class="alert alert-danger" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="alert-heading">One or more errors occurred!</h4>
+    <ul>
+      {{range .Errors}}
+      <li>{{.}}</li>
+      {{end}}
+    </ul>
+  </div>
+  {{end}}
+</div>
+
+<template id="alert-template">
+  <div class="alert alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading"></h4>
+    <p></p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</template>

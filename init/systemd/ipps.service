@@ -1,0 +1,13 @@
+[Unit]
+Description=IPPS Web Service
+After=postgresql@11-main.service
+
+[Service]
+ExecStart=/srv/ipps/ipps
+WorkingDirectory=/srv/ipps
+User=ipps
+LimitNPROC=100
+LimitCPU=60
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package grpc;
+
+option go_package = "gitlab.cs.fau.de/faust/faustctf-2020/ipps/internal/grpc";
+
+service IPPS {
+  rpc Login(LoginRequest) returns (LoginResponse) {};
+  rpc GetPublicKey(google.protobuf.Empty) returns (PublicKey) {};
+  rpc AddAddress(Address) returns (google.protobuf.Empty) {};
+  rpc GetAddresses(google.protobuf.Empty) returns (Addresses) {};
+  rpc AddCreditCard(CreditCard) returns (google.protobuf.Empty) {};
+  rpc GetCreditCards(google.protobuf.Empty) returns (CreditCards) {};
+}
+
+message LoginRequest {
+  string username = 1;
+  bytes  password = 2;
+}
+
+message LoginResponse {
+  string authToken = 1;
+}
+
+message PublicKey {
+  string key = 1;
+}
+
+message CreditCard {
+  string number = 1;
+}
+
+message CreditCards {
+  repeated CreditCard cards = 1;
+}
+
+message Address {
+  string street = 1;
+  string zip = 2;
+  string city = 3;
+  string country = 4;
+  string planet = 5;
+}
+
+message Addresses {
+  repeated Address addresses = 1;
+}

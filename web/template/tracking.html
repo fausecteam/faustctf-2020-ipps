@@ -1,0 +1,19 @@
+{{template "header.html" .}}
+<main class="container">
+  <h1>Tracking</h1>
+  {{template "alerts.html" .}}
+</main>
+<div class="tracking-form-bg bg-secondary">
+  <form method="post" action="/tracking">
+    <div class="form-group">
+      <label class="font-weight-bold" for="tracking-id">Tracking Number</label>
+      <input class="form-control" id="tracking-id" name="tracking-id" type="text"
+             placeholder="Enter Tracking Number">
+    </div>
+    <button class="btn btn-primary" type="submit">
+      <span class="material-icons" aria-hidden="true">search</span>
+      Track
+    </button>
+  </form>
+</div>
+{{template "footer.html" .}}
